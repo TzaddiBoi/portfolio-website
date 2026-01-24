@@ -30,11 +30,11 @@ const Navbar = () => {
     }
   };
 
-  const navLinks = [
-  { name: 'HOME', href: '/', route: '/' },
-  { name: 'ABOUT', href: '/about', route: '/about' },
-  { name: 'PORTFOLIO', href: '/portfolio', route: '/portfolio' },
-  { name: 'CONTACT', href: '/#contact', route: '/#contact' },
+const navLinks = [
+    { name: 'HOME', href: '/', route: '/' },
+    { name: 'ABOUT', href: '/about', route: '/about' },
+    { name: 'PORTFOLIO', href: '/portfolio', route: '/portfolio' },
+    { name: 'CONTACT', href: '/contact', route: '/contact' },
 ];
 
   return (

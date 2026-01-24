@@ -67,16 +67,13 @@ const About = () => {
               <div className="relative">
                 <div className="aspect-square bg-gradient-to-br from-deep-teal to-bright-teal rounded-3xl overflow-hidden border-4 border-bright-teal shadow-2xl shadow-bright-teal/30">
                   {/* Replace this div with your actual image when ready */}
-                  <div className="absolute inset-0 flex items-center justify-center text-9xl">
-                    👨‍💻
-                  </div>
-                  {/* When you have your photo, use this instead:
+                  {//When you have your photo, use this instead:
                   <img 
                     src="/src/assets/images/profile.jpg" 
                     alt="John Smith" 
                     className="w-full h-full object-cover"
                   />
-                  */}
+                  }
                 </div>
               </div>
             </div>

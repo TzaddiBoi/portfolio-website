@@ -7,15 +7,34 @@ const ProjectCard = ({ project }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-bright-teal/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
       {/* Image Area */}
-      <div className="relative h-64 bg-gradient-to-br from-deep-teal to-bright-teal flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="text-8xl relative z-10 group-hover:scale-110 transition-transform duration-700">
-          {project.emoji || '📦'}
-        </div>
-        {project.featured && (
-          <div className="absolute top-4 right-4 px-3 py-1 bg-bright-teal text-white text-xs font-bold rounded-full">
-            FEATURED
-          </div>
+      <div className="relative h-64 overflow-hidden">
+        {project.images && project.images.length > 0 ? (
+            <>
+            <img 
+                src={project.images[0]} 
+                alt={project.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            {project.featured && (
+                <div className="absolute top-4 right-4 px-3 py-1 bg-bright-teal text-white text-xs font-bold rounded-full">
+                FEATURED
+                </div>
+            )}
+            </>
+        ) : (
+            <>
+            <div className="absolute inset-0 bg-gradient-to-br from-deep-teal to-bright-teal flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="text-8xl relative z-10 group-hover:scale-110 transition-transform duration-700">
+                {project.emoji || '📦'}
+                </div>
+            </div>
+            {project.featured && (
+                <div className="absolute top-4 right-4 px-3 py-1 bg-bright-teal text-white text-xs font-bold rounded-full">
+                FEATURED
+                </div>
+            )}
+            </>
         )}
       </div>
 
