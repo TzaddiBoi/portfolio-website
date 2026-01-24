@@ -6,7 +6,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/yourusername', label: 'GitHub' },
     { icon: Linkedin, href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:john@yourdomain.com', label: 'Email' },
+    { icon: Mail, href: 'mailto:tzaddifatalla@gmail.com', label: 'Email' },
   ];
 
   const quickLinks = [
@@ -30,8 +30,8 @@ const Footer = () => {
           {/* Brand Column */}
           <div>
             <div className="text-2xl font-bold mb-4 font-poppins">
-              <span className="text-white">JOHN</span>
-              <span className="text-bright-teal">SMITH</span>
+              <span className="text-white">TZADDI</span>
+              <span className="text-bright-teal">FATALLA</span>
             </div>
             <p className="text-light-gray text-sm leading-relaxed">
               Innovative engineer transforming ideas into functional solutions.
@@ -93,12 +93,12 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-dark-gray pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-medium-gray text-sm">
-            © {currentYear} John Smith. All rights reserved.
+            © {currentYear} Tzaddi Fatalla. All rights reserved.
           </div>
           <div className="text-medium-gray text-sm flex items-center gap-2">
             <span>DESIGN BY</span>
             <button onClick={scrollToTop} className="text-bright-teal font-bold hover:underline">
-              JOHNSMITH
+              TZADDIFATALLA
             </button>
           </div>
         </div>

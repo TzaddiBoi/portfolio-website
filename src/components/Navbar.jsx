@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Search } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,21 +17,25 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'HOME', href: '#home' },
-    { name: 'ABOUT', href: '#about' },
-    { name: 'PORTFOLIO', href: '#portfolio' },
-    { name: 'CONTACT', href: '#contact' },
-  ];
-
   const scrollToSection = (e, href) => {
     e.preventDefault();
+    if (!isHomePage) {
+      navigate('/' + href);
+      return;
+    }
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
     }
   };
+
+  const navLinks = [
+    { name: 'HOME', href: '#home', route: '/' },
+    { name: 'ABOUT', href: '/about', route: '/about' },
+    { name: 'PORTFOLIO', href: '#portfolio', route: '/#portfolio' },
+    { name: 'CONTACT', href: '#contact', route: '/#contact' },
+  ];
 
   return (
     <nav
@@ -40,27 +48,49 @@ const Navbar = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="group" onClick={(e) => scrollToSection(e, '#home')}>
+          <Link to="/" className="group">
             <div className="text-2xl font-bold font-poppins">
               <span className="text-white">JOHN</span>
               <span className="text-bright-teal">SMITH</span>
             </div>
             <div className="text-bright-teal text-xs tracking-widest">ENGINEER</div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="relative font-medium tracking-wide transition-all duration-300 text-light-gray hover:text-bright-teal group"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-bright-teal transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"></span>
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              if (link.href.startsWith('#')) {
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => scrollToSection(e, link.href)}
+                    className="relative font-medium tracking-wide transition-all duration-300 text-light-gray hover:text-bright-teal group"
+                  >
+                    {link.name}
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-bright-teal transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"></span>
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`relative font-medium tracking-wide transition-all duration-300 group ${
+                    location.pathname === link.href
+                      ? 'text-bright-teal'
+                      : 'text-light-gray hover:text-bright-teal'
+                  }`}
+                >
+                  {link.name}
+                  <span
+                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-bright-teal transform origin-left transition-transform duration-300 ${
+                      location.pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                    }`}
+                  ></span>
+                </Link>
+              );
+            })}
             <button className="w-10 h-10 rounded-lg bg-darker-bg border border-dark-gray flex items-center justify-center text-bright-teal hover:bg-bright-teal hover:text-white transition-all duration-300">
               <Search className="w-5 h-5" />
             </button>
@@ -79,16 +109,30 @@ const Navbar = () => {
         {isOpen && (
           <div className="lg:hidden py-6 border-t border-dark-gray">
             <div className="space-y-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
-                  className="block text-light-gray hover:text-bright-teal transition-colors uppercase font-medium"
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                if (link.href.startsWith('#')) {
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={(e) => scrollToSection(e, link.href)}
+                      className="block text-light-gray hover:text-bright-teal transition-colors uppercase font-medium"
+                    >
+                      {link.name}
+                    </a>
+                  );
+                }
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block text-light-gray hover:text-bright-teal transition-colors uppercase font-medium"
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}
