@@ -16,48 +16,73 @@ const Contact = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+  setIsSubmitting(true);
+  setSubmitStatus(null);
 
-    try {
-      // Simulate API call (replace with actual form submission later)
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+  try {
+    // Web3Forms submission
+    const formData = {
+    access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+    name: data.name,
+    email: data.email,
+    service: data.service || 'Not specified',
+    message: data.message,
+    subject: `New Contact Form Submission from ${data.name}`,
+    };
 
-      console.log('Form data:', data);
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
 
-      // Success
+    const result = await response.json();
+
+    if (result.success) {
+      console.log('Form submitted successfully:', result);
       setSubmitStatus('success');
-      reset();
-
+      reset(); // Clear form
+      
       // Clear success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus(null);
       }, 5000);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      throw new Error('Form submission failed');
     }
-  };
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    setSubmitStatus('error');
+    
+    // Clear error message after 5 seconds
+    setTimeout(() => {
+      setSubmitStatus(null);
+    }, 5000);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const contactInfo = [
     {
       icon: Mail,
       label: 'Email',
-      value: 'john@yourdomain.com',
-      link: 'mailto:john@yourdomain.com',
+      value: 'tzaddifatalla@gmail.com',
+      link: 'mailto:tzaddifatalla@gmail.com',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+63 912 345 6789',
-      link: 'tel:+639123456789',
+      value: '+63 915 727 9003',
+      link: 'tel:+639157279003',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Quezon City, Philippines',
+      value: 'Oriental Mindoro, Philippines, 5200',
       link: null,
     },
   ];
@@ -66,7 +91,7 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      url: 'https://github.com/yourusername',
+      url: 'https://github.com/TzaddiBoi',
     },
     {
       icon: Linkedin,
@@ -76,7 +101,7 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      url: 'mailto:john@yourdomain.com',
+      url: 'mailto:tzaddifatalla@gmail.com',
     },
   ];
 
@@ -406,8 +431,8 @@ const Contact = () => {
           </h2>
           <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
             Feel free to reach out at{' '}
-            <a href="mailto:john@yourdomain.com" className="font-bold underline">
-              john@yourdomain.com
+            <a href="mailto:tzaddifatalla@gmail.com" className="font-bold underline">
+              tzaddifatalla@gmail.com
             </a>
           </p>
         </div>
