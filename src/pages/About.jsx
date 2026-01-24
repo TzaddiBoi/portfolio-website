@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { ChevronRight, Star, ArrowRight, Download } from 'lucide-react';
@@ -187,6 +188,218 @@ const About = () => {
                   )}
                 </ul>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-16 bg-darker-bg">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-white mb-8 text-center font-poppins">
+              How I <span className="text-bright-teal">Work</span>
+            </h2>
+            <p className="text-light-gray text-center mb-12 max-w-2xl mx-auto">
+              A systematic approach to turning ideas into reality
+            </p>
+
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                {
+                  step: '01',
+                  title: 'Discovery',
+                  description: 'Understanding your needs, goals, and challenges through detailed consultation',
+                  icon: '🔍',
+                },
+                {
+                  step: '02',
+                  title: 'Planning',
+                  description: 'Creating a comprehensive roadmap with timelines, milestones, and deliverables',
+                  icon: '📋',
+                },
+                {
+                  step: '03',
+                  title: 'Execution',
+                  description: 'Building the solution with iterative development and regular updates',
+                  icon: '⚡',
+                },
+                {
+                  step: '04',
+                  title: 'Delivery',
+                  description: 'Testing, refining, and deploying the final product with full documentation',
+                  icon: '🚀',
+                },
+              ].map((process, index) => (
+                <div
+                  key={index}
+                  className="relative bg-darkest-bg p-6 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500 group"
+                >
+                  {/* Step Number */}
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-teal rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    {process.step}
+                  </div>
+
+                  <div className="text-5xl mb-4 mt-4">{process.icon}</div>
+                  <h3 className="text-xl font-bold text-white mb-3 font-poppins">
+                    {process.title}
+                  </h3>
+                  <p className="text-light-gray text-sm leading-relaxed">{process.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Credentials Section */}
+      <section className="py-16 bg-darkest-bg">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-white mb-12 text-center font-poppins">
+              Credentials & <span className="text-bright-teal">Achievements</span>
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Certifications */}
+              <div className="bg-darker-bg p-8 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-teal rounded-xl flex items-center justify-center">
+                    <span className="text-2xl">📜</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white font-poppins">Certifications</h3>
+                </div>
+                <ul className="space-y-4">
+                  {[
+                    {
+                      name: 'Certified Python Programmer',
+                      issuer: 'Coursera',
+                      year: '2024',
+                    },
+                    {
+                      name: 'AutoCAD Essentials Certificate',
+                      issuer: 'Professional Certification',
+                      year: '2023',
+                    },
+                    {
+                      name: 'Introduction to IoT',
+                      issuer: 'edX',
+                      year: '2023',
+                    },
+                  ].map((cert, i) => (
+                    <li key={i} className="flex items-start gap-3 p-4 bg-darkest-bg rounded-lg">
+                      <ChevronRight className="w-5 h-5 text-bright-teal mt-1 flex-shrink-0" />
+                      <div>
+                        <div className="text-white font-semibold">{cert.name}</div>
+                        <div className="text-light-gray text-sm">{cert.issuer}</div>
+                        <div className="text-bright-teal text-xs mt-1">{cert.year}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Awards */}
+              <div className="bg-darker-bg p-8 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-teal rounded-xl flex items-center justify-center">
+                    <span className="text-2xl">🏆</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white font-poppins">
+                    Awards & Recognition
+                  </h3>
+                </div>
+                <ul className="space-y-4">
+                  {[
+                    {
+                      name: "Dean's Lister",
+                      detail: '3 Consecutive Semesters',
+                      year: '2023-2024',
+                    },
+                    {
+                      name: 'Hackathon Finalist',
+                      detail: '2nd Place',
+                      year: '2024',
+                    },
+                    {
+                      name: 'Best Engineering Project',
+                      detail: 'Water Pump System',
+                      year: '2024',
+                    },
+                  ].map((award, i) => (
+                    <li key={i} className="flex items-start gap-3 p-4 bg-darkest-bg rounded-lg">
+                      <Star className="w-5 h-5 text-bright-teal mt-1 flex-shrink-0" />
+                      <div>
+                        <div className="text-white font-semibold">{award.name}</div>
+                        <div className="text-light-gray text-sm">{award.detail}</div>
+                        <div className="text-bright-teal text-xs mt-1">{award.year}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Notable Clients/Projects */}
+            <div className="mt-8 bg-darker-bg p-8 rounded-2xl border border-dark-gray">
+              <h3 className="text-2xl font-bold text-white mb-6 font-poppins">
+                Notable Clients & <span className="text-bright-teal">Partnerships</span>
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  {
+                    name: 'Local Retail Store',
+                    project: 'POS System Deployment',
+                    icon: '🏪',
+                  },
+                  {
+                    name: 'XYZ University',
+                    project: 'Senior Design Sponsorship',
+                    icon: '🎓',
+                  },
+                  {
+                    name: 'Tech Startups',
+                    project: 'IoT Consulting',
+                    icon: '🚀',
+                  },
+                ].map((client, i) => (
+                  <div
+                    key={i}
+                    className="p-6 bg-darkest-bg rounded-xl border border-dark-gray hover:border-bright-teal transition-all duration-500 text-center group"
+                  >
+                    <div className="text-4xl mb-3">{client.icon}</div>
+                    <div className="text-white font-semibold mb-1">{client.name}</div>
+                    <div className="text-light-gray text-sm">{client.project}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Download Resume Section */}
+      <section className="py-16 bg-darker-bg">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-deep-teal to-bright-teal p-12 rounded-3xl text-center">
+            <h2 className="text-4xl font-bold text-white mb-4 font-poppins">
+              Want to Know More?
+            </h2>
+            <p className="text-white/90 text-lg mb-8">
+              Download my complete resume with detailed project information and experience
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <button className="px-8 py-4 bg-white text-deep-teal rounded-lg font-bold hover:bg-gray-100 transition-all duration-500 inline-flex items-center gap-2 shadow-xl">
+                <Download className="w-5 h-5" />
+                <span>Download Resume</span>
+              </button>
+              <Link
+                to="/#contact"
+                className="px-8 py-4 border-2 border-white text-white rounded-lg font-bold hover:bg-white hover:text-deep-teal transition-all duration-500 inline-flex items-center gap-2"
+              >
+                <span>Get In Touch</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
           </div>
         </div>

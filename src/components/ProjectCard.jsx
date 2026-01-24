@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const ProjectCard = ({ project }) => {
@@ -45,10 +46,13 @@ const ProjectCard = ({ project }) => {
         {/* Metrics & CTA */}
         <div className="flex items-center justify-between pt-4 border-t border-dark-gray">
           <span className="text-bright-teal font-bold text-sm">{project.metrics}</span>
-          <button className="text-bright-teal hover:text-white transition-colors duration-300 flex items-center gap-2 group/btn">
-            <span className="font-semibold">View Case Study</span>
+          <Link
+            to={`/portfolio/${project.id}`}
+            className="text-bright-teal hover:text-white transition-colors duration-300 flex items-center gap-2 group/btn"
+          >
+            <span className="font-semibold">View Details</span>
             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>

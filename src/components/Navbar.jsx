@@ -31,11 +31,11 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'HOME', href: '#home', route: '/' },
-    { name: 'ABOUT', href: '/about', route: '/about' },
-    { name: 'PORTFOLIO', href: '#portfolio', route: '/#portfolio' },
-    { name: 'CONTACT', href: '#contact', route: '/#contact' },
-  ];
+  { name: 'HOME', href: '/', route: '/' },
+  { name: 'ABOUT', href: '/about', route: '/about' },
+  { name: 'PORTFOLIO', href: '/portfolio', route: '/portfolio' },
+  { name: 'CONTACT', href: '/#contact', route: '/#contact' },
+];
 
   return (
     <nav
@@ -50,8 +50,8 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="group">
             <div className="text-2xl font-bold font-poppins">
-              <span className="text-white">JOHN</span>
-              <span className="text-bright-teal">SMITH</span>
+              <span className="text-white">TJAE_</span>
+              <span className="text-bright-teal">TZAD</span>
             </div>
             <div className="text-bright-teal text-xs tracking-widest">ENGINEER</div>
           </Link>
@@ -59,37 +59,37 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => {
-              if (link.href.startsWith('#')) {
+            if (link.href.startsWith('#')) {
                 return (
-                  <a
+                <a
                     key={link.name}
                     href={link.href}
                     onClick={(e) => scrollToSection(e, link.href)}
                     className="relative font-medium tracking-wide transition-all duration-300 text-light-gray hover:text-bright-teal group"
-                  >
+                >
                     {link.name}
                     <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-bright-teal transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"></span>
-                  </a>
+                </a>
                 );
-              }
-              return (
+            }
+            return (
                 <Link
-                  key={link.name}
-                  to={link.href}
-                  className={`relative font-medium tracking-wide transition-all duration-300 group ${
+                key={link.name}
+                to={link.href}
+                className={`relative font-medium tracking-wide transition-all duration-300 group ${
                     location.pathname === link.href
-                      ? 'text-bright-teal'
-                      : 'text-light-gray hover:text-bright-teal'
-                  }`}
+                    ? 'text-bright-teal'
+                    : 'text-light-gray hover:text-bright-teal'
+                }`}
                 >
-                  {link.name}
-                  <span
+                {link.name}
+                <span
                     className={`absolute -bottom-1 left-0 w-full h-0.5 bg-bright-teal transform origin-left transition-transform duration-300 ${
-                      location.pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                    location.pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                     }`}
-                  ></span>
+                ></span>
                 </Link>
-              );
+            );
             })}
             <button className="w-10 h-10 rounded-lg bg-darker-bg border border-dark-gray flex items-center justify-center text-bright-teal hover:bg-bright-teal hover:text-white transition-all duration-300">
               <Search className="w-5 h-5" />
