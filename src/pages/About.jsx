@@ -2,7 +2,12 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import { ChevronRight, Star, ArrowRight, Download } from 'lucide-react';
+import ScrollReveal from '../components/ScrollReveal';
+import { ChevronRight, Star, ArrowRight, Download, Scroll } from 'lucide-react';
+import InteractiveGradient from '../components/backgrounds/InteractiveGradient';
+import ParallaxBackground from '../components/backgrounds/ParallaxBackground';
+import FloatingElements from '../components/backgrounds/FloatingElements';
+import AnimatedBackground from '../components/backgrounds/AnimatedBackground';
 
 const About = () => {
   return (
@@ -14,11 +19,14 @@ const About = () => {
         keywords="engineering student, IoT specialist, developer portfolio, technical skills, certifications, awards"
         url="https://yourdomain.com/about"
       />
-      <Navbar />
+    
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-darkest-bg">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="pt-32 pb-16 bg-darkest-bg relative overflow-hidden">
+        <InteractiveGradient variant="hero" />
+        <FloatingElements variant="circles" />
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <ScrollReveal>
           <div className="text-center mb-16">
             <span className="text-bright-teal text-sm font-bold uppercase tracking-widest mb-4 block">
               About
@@ -28,14 +36,20 @@ const About = () => {
             </h1>
             <div className="w-24 h-1 bg-bright-teal mx-auto"></div>
           </div>
+          </ScrollReveal>
         </div>
+        
       </section>
 
       {/* Story Section */}
-      <section className="py-16 bg-darkest-bg">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="py-16 bg-darkest-bg relative overflow-hidden">
+        <ParallaxBackground speed={0.2}>
+          <AnimatedBackground variant="subtle" />
+        </ParallaxBackground>
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             {/* Image */}
+            <ScrollReveal delay={0}>
             <div className="order-2 lg:order-1">
               <div className="space-y-6 text-light-gray text-lg leading-relaxed">
                 <h2 className="text-3xl font-bold text-white mb-6 font-poppins">My Story</h2>
@@ -69,8 +83,10 @@ const About = () => {
                 </p>
               </div>
             </div>
+            </ScrollReveal>
 
             {/* Profile Image */}
+            <ScrollReveal delay={0.2}>
             <div className="order-1 lg:order-2">
               <div className="relative">
                 <div className="aspect-square bg-gradient-to-br from-deep-teal to-bright-teal rounded-3xl overflow-hidden border-4 border-bright-teal shadow-2xl shadow-bright-teal/30">
@@ -79,26 +95,32 @@ const About = () => {
                   <img 
                     src="/src/assets/images/profile.jpg" 
                     alt="Tzaddi Fatalla" 
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   }
                 </div>
               </div>
             </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Quick Facts */}
-      <section className="py-16 bg-darker-bg">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="py-16 bg-darker-bg relative overflow-hidden">
+        <InteractiveGradient variant="subtle" />
+        <FloatingElements variant="dots" />
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
+              //need to change these later to actual facts
               { label: 'Years Experience', value: '3+', icon: '⏱️' },
               { label: 'Projects Completed', value: '8+', icon: '📦' },
               { label: 'Happy Clients', value: '10+', icon: '😊' },
               { label: 'Technologies', value: '15+', icon: '💻' },
             ].map((fact, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
               <div
                 key={index}
                 className="bg-darkest-bg p-6 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500 text-center group"
@@ -109,15 +131,18 @@ const About = () => {
                 </div>
                 <div className="text-light-gray text-sm">{fact.label}</div>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Skills & Expertise Section */}
-      <section className="py-16 bg-darkest-bg">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="py-16 bg-darkest-bg relative overflow-hidden">
+        <AnimatedBackground variant="grid" />
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-6xl mx-auto">
+            <ScrollReveal>
             <h2 className="text-4xl font-bold text-white mb-8 text-center font-poppins">
               Skills & <span className="text-bright-teal">Expertise</span>
             </h2>
@@ -125,9 +150,11 @@ const About = () => {
               A comprehensive set of technical skills acquired through hands-on projects and
               continuous learning
             </p>
+            </ScrollReveal>
 
             <div className="grid md:grid-cols-3 gap-6">
               {/* Programming */}
+              <ScrollReveal delay={0}>
               <div className="bg-darker-bg p-8 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-teal rounded-xl flex items-center justify-center">
@@ -146,8 +173,10 @@ const About = () => {
                   )}
                 </ul>
               </div>
+              </ScrollReveal>
 
               {/* Hardware & IoT */}
+              <ScrollReveal delay={0.15}>
               <div className="bg-darker-bg p-8 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-teal rounded-xl flex items-center justify-center">
@@ -171,8 +200,10 @@ const About = () => {
                   ))}
                 </ul>
               </div>
+              </ScrollReveal>
 
               {/* Tools & Platforms */}
+              <ScrollReveal delay={0.3}>
               <div className="bg-darker-bg p-8 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-teal rounded-xl flex items-center justify-center">
@@ -193,21 +224,25 @@ const About = () => {
                   )}
                 </ul>
               </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-16 bg-darker-bg">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="py-16 bg-darker-bg relative overflow-hidden">
+       <InteractiveGradient variant="default" />
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-6xl mx-auto">
+            <ScrollReveal>
             <h2 className="text-4xl font-bold text-white mb-8 text-center font-poppins">
               How I <span className="text-bright-teal">Work</span>
             </h2>
             <p className="text-light-gray text-center mb-12 max-w-2xl mx-auto">
               A systematic approach to turning ideas into reality
             </p>
+            </ScrollReveal>
 
             <div className="grid md:grid-cols-4 gap-6">
               {[
@@ -236,6 +271,7 @@ const About = () => {
                   icon: '🚀',
                 },
               ].map((process, index) => (
+                <ScrollReveal key={index} delay={index * 0.1}>
                 <div
                   key={index}
                   className="relative bg-darkest-bg p-6 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500 group"
@@ -251,6 +287,7 @@ const About = () => {
                   </h3>
                   <p className="text-light-gray text-sm leading-relaxed">{process.description}</p>
                 </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -258,15 +295,22 @@ const About = () => {
       </section>
 
       {/* Credentials Section */}
-      <section className="py-16 bg-darkest-bg">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="py-16 bg-darkest-bg relative overflow-hidden">
+        <ParallaxBackground speed={0.3}>
+          <AnimatedBackground variant="elegant" />
+        </ParallaxBackground>
+        <FloatingElements variant="dots" />
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-6xl mx-auto">
+            <ScrollReveal>
             <h2 className="text-4xl font-bold text-white mb-12 text-center font-poppins">
               Credentials & <span className="text-bright-teal">Achievements</span>
             </h2>
+            </ScrollReveal>
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Certifications */}
+              <ScrollReveal delay={0}>
               <div className="bg-darker-bg p-8 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-teal rounded-xl flex items-center justify-center">
@@ -303,8 +347,10 @@ const About = () => {
                   ))}
                 </ul>
               </div>
+              </ScrollReveal>
 
               {/* Awards */}
+              <ScrollReveal delay={0.15}>
               <div className="bg-darker-bg p-8 rounded-2xl border border-dark-gray hover:border-bright-teal transition-all duration-500">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-teal rounded-xl flex items-center justify-center">
@@ -343,9 +389,11 @@ const About = () => {
                   ))}
                 </ul>
               </div>
+              </ScrollReveal>
             </div>
 
             {/* Notable Clients/Projects */}
+            <ScrollReveal delay={0.2}>
             <div className="mt-8 bg-darker-bg p-8 rounded-2xl border border-dark-gray">
               <h3 className="text-2xl font-bold text-white mb-6 font-poppins">
                 Notable Clients & <span className="text-bright-teal">Partnerships</span>
@@ -379,13 +427,16 @@ const About = () => {
                 ))}
               </div>
             </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Download Resume Section */}
-      <section className="py-16 bg-darker-bg">
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="py-16 bg-darker-bg relative overflow-hidden">
+        <AnimatedBackground variant="subtle" />
+        <ScrollReveal>
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-4xl mx-auto bg-gradient-to-br from-deep-teal to-bright-teal p-12 rounded-3xl text-center">
             <h2 className="text-4xl font-bold text-white mb-4 font-poppins">
               Want to Know More?
@@ -399,7 +450,7 @@ const About = () => {
                 <span>Download Resume</span>
               </button>
               <Link
-                to="/#contact"
+                to="/contact"
                 className="px-8 py-4 border-2 border-white text-white rounded-lg font-bold hover:bg-white hover:text-deep-teal transition-all duration-500 inline-flex items-center gap-2"
               >
                 <span>Get In Touch</span>
@@ -408,9 +459,10 @@ const About = () => {
             </div>
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
-      <Footer />
+     
     </div>
   );
 };

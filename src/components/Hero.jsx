@@ -1,13 +1,7 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
-  const scrollToSection = (sectionId) => {
-    const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Animated Background */}
@@ -42,19 +36,19 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => scrollToSection('#portfolio')}
+              <Link
+                to="/portfolio"
                 className="group px-8 py-4 bg-gradient-to-r from-deep-teal to-bright-teal text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-bright-teal/50 transition-all duration-500 flex items-center gap-2"
               >
                 <span>Explore Projects</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-              <button
-                onClick={() => scrollToSection('#contact')}
+              </Link>
+              <Link
+                to="/contact"
                 className="px-8 py-4 border-2 border-bright-teal text-bright-teal rounded-lg font-semibold hover:bg-bright-teal hover:text-white transition-all duration-500"
               >
                 Get In Touch
-              </button>
+              </Link>
             </div>
 
             {/* Stats */}

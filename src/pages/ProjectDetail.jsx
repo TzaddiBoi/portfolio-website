@@ -14,14 +14,14 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <div className="min-h-screen bg-darkest-bg">
-        <Navbar />
+       
         <div className="container mx-auto px-6 lg:px-12 py-32 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
           <Link to="/portfolio" className="text-bright-teal hover:underline">
             Back to Portfolio
           </Link>
         </div>
-        <Footer />
+      
       </div>
     );
   }
@@ -56,7 +56,7 @@ const ProjectDetail = () => {
         url={`https://yourdomain.com/portfolio/${project.id}`}
         type="article"
       />
-      <Navbar />
+     
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-darkest-bg">
@@ -111,6 +111,7 @@ const ProjectDetail = () => {
                 <img 
                 src={project.images[0]} 
                 alt={project.title}
+                loading="lazy"
                 className="w-full h-full object-cover"
                 />
             </div>
@@ -202,6 +203,7 @@ const ProjectDetail = () => {
                 <img 
                 src={image} 
                 alt={`${project.title} - Screenshot ${i + 2}`}
+                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
             </div>
@@ -315,16 +317,16 @@ const ProjectDetail = () => {
           <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
             Let's create something amazing for your business
           </p>
-          <a
-            href="/#contact"
+          <Link
+            to="/contact"
             className="inline-block px-10 py-5 bg-white text-deep-teal rounded-lg font-bold hover:bg-gray-100 transition-all duration-500"
           >
             GET IN TOUCH
-          </a>
+          </Link>
         </div>
       </section>
 
-      <Footer />
+      
     </div>
   );
 };

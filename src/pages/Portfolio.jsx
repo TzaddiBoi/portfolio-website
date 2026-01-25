@@ -39,7 +39,7 @@ const Portfolio = () => {
         keywords="portfolio projects, IoT projects, web development portfolio, application examples, engineering projects"
         url="https://yourdomain.com/portfolio"
       />
-      <Navbar />
+     
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-darkest-bg">
@@ -134,7 +134,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      <Footer />
+    
     </div>
   );
 };

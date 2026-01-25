@@ -115,7 +115,7 @@ const Contact = () => {
         keywords="contact engineer, hire developer, project inquiry, technical consultation, freelance engineer"
         url="https://yourdomain.com/contact"
       />
-      <Navbar />
+      
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-darkest-bg">
@@ -446,7 +446,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <Footer />
+     
     </div>
   );
 };
