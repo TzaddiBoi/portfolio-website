@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard';
 import TestimonialCard from '../components/TestimonialCard';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
+import StructuredData from '../components/StructuredData';
 import { ArrowRight } from 'lucide-react';
 import { services } from '../data/services';
 import { projects } from '../data/projects';
@@ -35,6 +36,10 @@ const Home = () => {
         keywords="IoT engineer, web developer, mobile apps, prototyping, technical consulting, engineering services"
         url="https://yourdomain.com"
       />
+      {/* ✅ Add Structured Data component */}
+      <StructuredData />
+
+
       <Navbar />
       <Hero />
 
