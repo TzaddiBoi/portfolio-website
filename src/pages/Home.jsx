@@ -4,6 +4,7 @@ import ServiceCard from '../components/ServiceCard';
 import ProjectCard from '../components/ProjectCard';
 import TestimonialCard from '../components/TestimonialCard';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { ArrowRight } from 'lucide-react';
 import { services } from '../data/services';
 import { projects } from '../data/projects';
@@ -27,6 +28,13 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-darkest-bg">
+      {/* ✅ Add SEO component */}
+      <SEO 
+        title="Home"
+        description="Professional engineering portfolio showcasing IoT solutions, application development, and prototyping projects. Building innovative technology solutions for startups and small businesses."
+        keywords="IoT engineer, web developer, mobile apps, prototyping, technical consulting, engineering services"
+        url="https://yourdomain.com"
+      />
       <Navbar />
       <Hero />
 

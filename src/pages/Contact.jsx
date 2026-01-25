@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Github, Linkedin } from 'lucide-react';
 
 const Contact = () => {
@@ -107,6 +108,13 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-darkest-bg">
+       {/* ✅ Add SEO component */}
+      <SEO 
+        title="Contact"
+        description="Get in touch to discuss your project. Available for IoT solutions, application development, prototyping, and technical consulting. Response within 24 hours."
+        keywords="contact engineer, hire developer, project inquiry, technical consultation, freelance engineer"
+        url="https://yourdomain.com/contact"
+      />
       <Navbar />
 
       {/* Hero Section */}

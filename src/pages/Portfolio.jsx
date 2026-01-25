@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
+import SEO from '../components/SEO';
 import { projects } from '../data/projects';
 
 const Portfolio = () => {
@@ -31,6 +32,13 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-darkest-bg">
+      {/* ✅ Add SEO component */}
+      <SEO 
+        title="Portfolio"
+        description="Explore my portfolio of innovative projects including IoT solutions, web applications, and prototyping work. See real-world examples of problem-solving through technology."
+        keywords="portfolio projects, IoT projects, web development portfolio, application examples, engineering projects"
+        url="https://yourdomain.com/portfolio"
+      />
       <Navbar />
 
       {/* Hero Section */}

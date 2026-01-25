@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { ArrowLeft, ArrowRight, ExternalLink, Check } from 'lucide-react';
 import { projects } from '../data/projects';
 
@@ -47,6 +48,14 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-darkest-bg">
+      {/* ✅ Add dynamic SEO component */}
+      <SEO 
+        title={project.title}
+        description={project.description}
+        keywords={`${project.tags.join(', ')}, ${project.category}, case study`}
+        url={`https://yourdomain.com/portfolio/${project.id}`}
+        type="article"
+      />
       <Navbar />
 
       {/* Hero Section */}

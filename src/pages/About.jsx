@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { ChevronRight, Star, ArrowRight, Download } from 'lucide-react';
 
 const About = () => {
   return (
     <div className="min-h-screen bg-darkest-bg">
+      {/* ✅ Add SEO component */}
+      <SEO 
+        title="About Me"
+        description="Learn about Tzaddi Fatalla, an innovative third-year engineering student specializing in IoT, application development, and prototyping. Discover my journey, skills, and achievements."
+        keywords="engineering student, IoT specialist, developer portfolio, technical skills, certifications, awards"
+        url="https://yourdomain.com/about"
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -70,7 +78,7 @@ const About = () => {
                   {//When you have your photo, use this instead:
                   <img 
                     src="/src/assets/images/profile.jpg" 
-                    alt="John Smith" 
+                    alt="Tzaddi Fatalla" 
                     className="w-full h-full object-cover"
                   />
                   }
