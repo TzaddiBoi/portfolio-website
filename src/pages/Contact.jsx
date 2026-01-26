@@ -17,46 +17,24 @@ const Contact = () => {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, e) => {
   setIsSubmitting(true);
   setSubmitStatus(null);
 
   try {
-    // Try Web3Forms first
-    const web3FormsData = {
-      access_key: import.meta.env.VITE_WEB3FORMS_KEY,
-      name: data.name,
-      email: data.email,
-      service: data.service || 'Not specified',
-      message: data.message,
-      subject: `New Contact Form Submission from ${data.name}`,
-    };
-
-    const web3Response = await fetch('https://api.web3forms.com/submit', {
+    // Get the actual form element
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    // Submit to Netlify
+    const response = await fetch('/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(web3FormsData),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
     });
 
-    const web3Result = await web3Response.json();
-
-    // Also submit to Netlify as backup
-    const formElement = document.querySelector('form[name="contact"]');
-    if (formElement) {
-      const netlifyFormData = new FormData(formElement);
-      
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(netlifyFormData).toString(),
-      });
-    }
-
-    if (web3Result.success) {
-      console.log('Form submitted successfully:', web3Result);
+    if (response.ok) {
+      console.log('Form submitted successfully to Netlify');
       setSubmitStatus('success');
       reset(); // Clear form
       
