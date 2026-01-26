@@ -22,29 +22,41 @@ const Contact = () => {
   setSubmitStatus(null);
 
   try {
-    // Web3Forms submission
-    const formData = {
-    access_key: import.meta.env.VITE_WEB3FORMS_KEY,
-    name: data.name,
-    email: data.email,
-    service: data.service || 'Not specified',
-    message: data.message,
-    subject: `New Contact Form Submission from ${data.name}`,
+    // Try Web3Forms first
+    const web3FormsData = {
+      access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+      name: data.name,
+      email: data.email,
+      service: data.service || 'Not specified',
+      message: data.message,
+      subject: `New Contact Form Submission from ${data.name}`,
     };
 
-    const response = await fetch('https://api.web3forms.com/submit', {
+    const web3Response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(web3FormsData),
     });
 
-    const result = await response.json();
+    const web3Result = await web3Response.json();
 
-    if (result.success) {
-      console.log('Form submitted successfully:', result);
+    // Also submit to Netlify as backup
+    const formElement = document.querySelector('form[name="contact"]');
+    if (formElement) {
+      const netlifyFormData = new FormData(formElement);
+      
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(netlifyFormData).toString(),
+      });
+    }
+
+    if (web3Result.success) {
+      console.log('Form submitted successfully:', web3Result);
       setSubmitStatus('success');
       reset(); // Clear form
       
@@ -170,7 +182,22 @@ const Contact = () => {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <form 
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleSubmit(onSubmit)} 
+                className="space-y-6"
+              >
+
+              {/* Hidden field for Netlify */}
+              <input type="hidden" name="form-name" value="contact" />
+              
+              {/* Honeypot field for spam protection */}
+              <div className="hidden">
+                <input name="bot-field" />
+              </div>
                 {/* Name Field */}
                 <div>
                   <label className="block text-light-gray mb-2 font-medium">
@@ -178,6 +205,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    name="name"
                     {...register('name', {
                       required: 'Name is required',
                       minLength: {
@@ -207,6 +235,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     {...register('email', {
                       required: 'Email is required',
                       pattern: {
@@ -235,6 +264,7 @@ const Contact = () => {
                     Service Interested In
                   </label>
                   <select
+                    name="service"
                     {...register('service')}
                     className="w-full px-6 py-4 bg-darkest-bg border border-dark-gray rounded-xl text-white focus:border-bright-teal focus:outline-none transition-all duration-300"
                   >
@@ -253,6 +283,7 @@ const Contact = () => {
                     Message <span className="text-bright-teal">*</span>
                   </label>
                   <textarea
+                    name="message"
                     rows="5"
                     {...register('message', {
                       required: 'Message is required',
