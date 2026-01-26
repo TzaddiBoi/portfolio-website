@@ -44,7 +44,7 @@ const Home = () => {
         title="Home"
         description="Professional engineering portfolio showcasing IoT solutions, application development, and prototyping projects. Building innovative technology solutions for startups and small businesses."
         keywords="IoT engineer, web developer, mobile apps, prototyping, technical consulting, engineering services"
-        url="https://yourdomain.com"
+        url="https://engrtjaetzad.online"
       />
       {/* ✅ Structured Data component */}
       <StructuredData />

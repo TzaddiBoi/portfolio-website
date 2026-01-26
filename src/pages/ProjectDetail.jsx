@@ -53,7 +53,7 @@ const ProjectDetail = () => {
         title={project.title}
         description={project.description}
         keywords={`${project.tags.join(', ')}, ${project.category}, case study`}
-        url={`https://yourdomain.com/portfolio/${project.id}`}
+        url={`https://engrtjaetzad.online/portfolio/${project.id}`}
         type="article"
       />
      

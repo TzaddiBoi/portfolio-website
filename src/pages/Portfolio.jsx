@@ -37,7 +37,7 @@ const Portfolio = () => {
         title="Portfolio"
         description="Explore my portfolio of innovative projects including IoT solutions, web applications, and prototyping work. See real-world examples of problem-solving through technology."
         keywords="portfolio projects, IoT projects, web development portfolio, application examples, engineering projects"
-        url="https://yourdomain.com/portfolio"
+        url="https://engrtjaetzad.online/portfolio"
       />
      
 

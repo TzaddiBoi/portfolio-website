@@ -17,7 +17,7 @@ const About = () => {
         title="About Me"
         description="Learn about Tzaddi Fatalla, an innovative third-year engineering student specializing in IoT, application development, and prototyping. Discover my journey, skills, and achievements."
         keywords="engineering student, IoT specialist, developer portfolio, technical skills, certifications, awards"
-        url="https://yourdomain.com/about"
+        url="https://engrtjaetzad.online/about"
       />
     
 

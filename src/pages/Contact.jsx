@@ -114,7 +114,7 @@ const Contact = () => {
         title="Contact"
         description="Get in touch to discuss your project. Available for IoT solutions, application development, prototyping, and technical consulting. Response within 24 hours."
         keywords="contact engineer, hire developer, project inquiry, technical consultation, freelance engineer"
-        url="https://yourdomain.com/contact"
+        url="https://engrtjaetzad.online/contact"
       />
       
 
