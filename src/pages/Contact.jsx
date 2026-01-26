@@ -17,13 +17,14 @@ const Contact = () => {
     reset,
   } = useForm();
 
-  const onSubmit = async (data, e) => {
+  const onSubmit = async (data, event) => {
+  event.preventDefault();
   setIsSubmitting(true);
   setSubmitStatus(null);
 
   try {
-    // Get the actual form element
-    const form = e.target;
+    // Get the form element
+    const form = event.target;
     const formData = new FormData(form);
     
     // Submit to Netlify
@@ -45,18 +46,18 @@ const Contact = () => {
     } else {
       throw new Error('Form submission failed');
     }
-  } catch (error) {
-    console.error('Error submitting form:', error);
-    setSubmitStatus('error');
-    
-    // Clear error message after 5 seconds
-    setTimeout(() => {
-      setSubmitStatus(null);
-    }, 5000);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+      
+      // Clear error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
     {
@@ -175,6 +176,12 @@ const Contact = () => {
               {/* Honeypot field for spam protection */}
               <div className="hidden">
                 <input name="bot-field" />
+
+              {/* Success/Error Messages */}
+              {submitStatus === 'success' && (
+                {/* Your existing success message */}
+              )}
+
               </div>
                 {/* Name Field */}
                 <div>

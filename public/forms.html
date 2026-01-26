@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Netlify Forms</title>
+</head>
+<body style="display:none;">
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <select name="service">
+      <option value="">Select a service</option>
+      <option value="iot">IoT Solutions</option>
+      <option value="app-dev">Application Development</option>
+      <option value="prototyping">Prototyping & Testing</option>
+      <option value="consulting">Technical Consulting</option>
+      <option value="other">Other</option>
+    </select>
+    <textarea name="message"></textarea>
+    <input type="hidden" name="form-name" value="contact" />
+    <div hidden>
+      <input name="bot-field" />
+    </div>
+  </form>
+</body>
+</html>
