@@ -1,0 +1,9 @@
+# Redirect HTTP to HTTPS
+http://engrtjaetzad.online/* https://engrtjaetzad.online/:splat 301!
+http://www.engrtjaetzad.online/* https://www.engrtjaetzad.online/:splat 301!
+
+# Redirect www to non-www (or vice versa)
+https://www.engrtjaetzad.online/* https://engrtjaetzad.online/:splat 301!
+
+# SPA redirect - for React Router
+/*    /index.html   200
