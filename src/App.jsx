@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+//import { useEffect } from 'react';
+//import { initGA, logPageView } from './utils/analytics';
 import Home from './pages/Home';
 import About from './pages/About';
 import Portfolio from './pages/Portfolio';
@@ -16,6 +18,11 @@ import ErrorBoundary from './components/ErrorBoundary';
 // Separate component to use useLocation hook
 function AnimatedRoutes() {
   const location = useLocation();
+  
+  // Track page views on route change
+  //useEffect(() => {
+  //  logPageView();
+  //}, [location]);
 
   return (
     <>
@@ -81,6 +88,13 @@ function AnimatedRoutes() {
 }
 
 function App() {
+
+  // Initialize Google Analytics on app load
+  //useEffect(() => {
+  //  initGA();
+  //}, []);
+
+
   return (
     <Router>
       <ScrollToTop />
