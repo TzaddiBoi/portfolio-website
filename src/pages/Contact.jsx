@@ -15,7 +15,14 @@ const Contact = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      service: '',
+      message: ''
+    }
+  });
 
   const onSubmit = async (data, event) => {
   event.preventDefault();
@@ -23,11 +30,9 @@ const Contact = () => {
   setSubmitStatus(null);
 
   try {
-    // Get the form element
-    const form = event.target;
-    const formData = new FormData(form);
+    const formElement = event.target;
+    const formData = new FormData(formElement);
     
-    // Submit to Netlify
     const response = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -37,32 +42,32 @@ const Contact = () => {
     if (response.ok) {
       console.log('Form submitted successfully to Netlify');
       setSubmitStatus('success');
+      
+      // Reset form
       reset({
         name: '',
         email: '',
         service: '',
-        message: '',
-      }); // Clear form
+        message: ''
+      });
       
-      // Clear success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus(null);
       }, 5000);
     } else {
       throw new Error('Form submission failed');
     }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-      
-      // Clear error message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setSubmitStatus('error');
+        
+        setTimeout(() => {
+          setSubmitStatus(null);
+        }, 5000);
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
 
   const contactInfo = [
     {
@@ -176,18 +181,13 @@ const Contact = () => {
               >
 
               {/* Hidden field for Netlify */}
-              <input type="hidden" name="form-name" value="contact" />
-              
+                <input type="hidden" name="form-name" value="contact" />
+
               {/* Honeypot field for spam protection */}
-              <div className="hidden">
-                <input name="bot-field" />
+                <div className="hidden">
+                  <input name="bot-field" />
+                </div>
 
-              {/* Success/Error Messages */}
-              {submitStatus === 'success' && (
-                {/* Your existing success message */}
-              )}
-
-              </div>
                 {/* Name Field */}
                 <div>
                   <label className="block text-light-gray mb-2 font-medium">
