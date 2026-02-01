@@ -22,11 +22,11 @@ export const projects = [
     metrics: '30% Error Reduction',
     featured: true,
     images: [
-      '/src/assets/images/pos-login.jpg',
-      '/src/assets/images/pos-dashboard.jpg',
-      '/src/assets/images/pos-products.jpg',
-      '/src/assets/images/pos-settings.jpg',
-      '/src/assets/images/pos-reports.jpg'
+      '/images/pos-login.jpg',
+      '/images/pos-dashboard.jpg',
+      '/images/pos-products.jpg',
+      '/images/pos-settings.jpg',
+      '/images/pos-reports.jpg'
     ],
     tools: ['Python', 'SQLite', 'Tkinter'],
     duration: '3 months',
@@ -57,7 +57,7 @@ export const projects = [
     metrics: '20% Water Savings',
     featured: true,
     images: [
-      '/src/assets/images/waterpump-circuit.png'
+      '/images/waterpump-circuit.png'
     ],
     tools: ['Arduino', 'Ultrasonic Sensor', 'Relay Module', 'C++'],
     duration: '2 months',

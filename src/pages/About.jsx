@@ -93,7 +93,7 @@ const About = () => {
                   {/* Replace this div with your actual image when ready */}
                   {//When you have your photo, use this instead:
                   <img 
-                    src="/src/assets/images/profile.jpg" 
+                    src="/images/profile.jpg" 
                     alt="Tzaddi Fatalla" 
                     loading="lazy"
                     className="w-full h-full object-cover"
