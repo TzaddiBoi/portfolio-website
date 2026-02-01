@@ -37,7 +37,12 @@ const Contact = () => {
     if (response.ok) {
       console.log('Form submitted successfully to Netlify');
       setSubmitStatus('success');
-      reset(); // Clear form
+      reset({
+        name: '',
+        email: '',
+        service: '',
+        message: '',
+      }); // Clear form
       
       // Clear success message after 5 seconds
       setTimeout(() => {
